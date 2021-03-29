@@ -1,5 +1,6 @@
 package org.geektimes.rest.client;
 
+import org.geektimes.rest.DefaultRuntimeDelegate;
 import org.geektimes.rest.core.DefaultUriBuilder;
 
 import javax.net.ssl.HostnameVerifier;
@@ -25,11 +26,23 @@ public class DefaultClient implements Client {
         return target(URI.create(uri));
     }
 
+    /**
+     * UriBuilder.fromUri(uri) 方法里用newInstance 根据SPI找到 DefaultRuntimeDelegate
+     * 并调用其createUriBuilder
+     * @see  DefaultRuntimeDelegate#createUriBuilder()
+     * @param uri
+     * @return
+     */
     @Override
     public WebTarget target(URI uri) {
         return target(UriBuilder.fromUri(uri));
     }
 
+    /**
+     *
+     * @param uriBuilder
+     * @return
+     */
     @Override
     public WebTarget target(UriBuilder uriBuilder) {
         return new ImmutableWebTarget(uriBuilder);

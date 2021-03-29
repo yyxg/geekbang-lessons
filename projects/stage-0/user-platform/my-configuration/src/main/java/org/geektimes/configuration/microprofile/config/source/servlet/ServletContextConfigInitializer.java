@@ -12,6 +12,7 @@ import javax.servlet.ServletContextListener;
  * 如何注册当前 ServletContextListener 实现
  *
  * @see ServletConfigInitializer
+ * @see org.geektimes.configuration.microprofile.config.source.servlet.ServletConfigInitializer#onStartup
  */
 public class ServletContextConfigInitializer implements ServletContextListener {
 

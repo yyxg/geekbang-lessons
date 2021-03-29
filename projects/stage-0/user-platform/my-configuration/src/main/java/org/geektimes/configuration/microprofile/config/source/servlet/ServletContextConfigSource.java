@@ -8,6 +8,12 @@ import java.util.Map;
 
 import static java.lang.String.format;
 
+/**
+ * 在ServletContextConfigInitializer装载
+ *
+ * @see ServletContextConfigInitializer
+ * @see ServletContextConfigInitializer#contextInitialized(javax.servlet.ServletContextEvent)
+ */
 public class ServletContextConfigSource extends MapBasedConfigSource {
 
     private final ServletContext servletContext;
@@ -17,6 +23,12 @@ public class ServletContextConfigSource extends MapBasedConfigSource {
         this.servletContext = servletContext;
     }
 
+    /**
+     * TODO 这是在干嘛？
+     *
+     * @param configData
+     * @throws Throwable
+     */
     @Override
     protected void prepareConfigData(Map configData) throws Throwable {
         Enumeration<String> parameterNames = servletContext.getInitParameterNames();
