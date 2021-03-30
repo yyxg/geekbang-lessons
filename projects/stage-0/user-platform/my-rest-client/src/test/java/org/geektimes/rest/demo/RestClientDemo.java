@@ -4,14 +4,18 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.Response;
 
+/**
+ * @link
+ */
 public class RestClientDemo {
 
     public static void main(String[] args) {
+        //根据SPI 配置找到 DefaultClientBuilder 并调用其build方法返回 DefaultClient
         Client client = ClientBuilder.newClient();
         Response response = client
-                .target("http://127.0.0.1:8080/hello/world")      // WebTarget
+                .target("http://127.0.0.1:8080/hello/world")// WebTarget
                 .request() // Invocation.Builder
-                .get();                                     //  Response
+                .get();  //  Response
 
         String content = response.readEntity(String.class);
 

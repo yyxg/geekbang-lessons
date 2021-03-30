@@ -7,6 +7,12 @@ import org.geektimes.rest.core.DefaultUriBuilder;
 import javax.ws.rs.core.*;
 import javax.ws.rs.ext.RuntimeDelegate;
 
+/**
+ *  在哪里用到
+ *  为什么配置SPI?
+ *  @see javax.ws.rs.ext.RuntimeDelegate#getInstance()
+ *  javax.ws.rs.ext.RuntimeDelegate#findDelegate()
+ */
 public class DefaultRuntimeDelegate extends RuntimeDelegate {
 
     @Override
