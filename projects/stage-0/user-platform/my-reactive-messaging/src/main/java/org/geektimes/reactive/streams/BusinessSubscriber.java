@@ -5,11 +5,14 @@ import org.reactivestreams.Subscription;
 
 /**
  * 业务数据订阅者
- *
+ * @author
  * @param <T>
  */
 public class BusinessSubscriber<T> implements Subscriber<T> {
 
+    /**
+     * 背压控制器又作为订阅者的属性
+     */
     private Subscription subscription;
 
     private int count = 0;
@@ -28,7 +31,8 @@ public class BusinessSubscriber<T> implements Subscriber<T> {
 
     @Override
     public void onNext(Object o) {
-        if (count++ > 2) { // 当到达数据阈值时，取消 Publisher 给当前 Subscriber 发送数据
+        // 当到达数据阈值时，取消 Publisher 给当前 Subscriber 发送数据
+        if (count++ > 2) {
             subscription.cancel();
             return;
         }

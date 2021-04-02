@@ -10,6 +10,11 @@ public class SimplePublisher<T> implements Publisher<T> {
 
     private List<Subscriber> subscribers = new LinkedList<>();
 
+
+    /**
+     * 添加订阅者
+     * @param s
+     */
     @Override
     public void subscribe(Subscriber<? super T> s) {
         SubscriptionAdapter subscription = new SubscriptionAdapter(s);

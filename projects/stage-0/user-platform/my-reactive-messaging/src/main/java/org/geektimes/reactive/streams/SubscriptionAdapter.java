@@ -5,6 +5,8 @@ import org.reactivestreams.Subscription;
 
 /**
  * (Internal) Subscription Adapter with one {@link Subscriber}
+ * Subscriber 对 publisher 控制对象，也可以称为 "背压"控制器
+ * 对订阅者进行包装
  */
 class SubscriptionAdapter implements Subscription {
 
@@ -14,6 +16,10 @@ class SubscriptionAdapter implements Subscription {
         this.subscriber = new DecoratingSubscriber(subscriber);
     }
 
+    /**
+     * 设置onNext方法调用最大次数
+     * @param n
+     */
     @Override
     public void request(long n) {
         if (n < 1) {
